@@ -18,6 +18,25 @@ public class Goomba : MonoBehaviour
     }
 
     // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Enter");
+            bool isFrozen = true;
+
+            if (isFrozen == true)
+            {
+                rb.constraints = RigidbodyConstraints.None;
+                isFrozen = false;
+            }
+            else
+            {
+                rb.constraints = RigidbodyConstraints.FreezeRotation;
+                isFrozen = true;
+            }
+        }
+    }
     void FixedUpdate()
     {
         rb.AddForce(Vector3.back * speed);
